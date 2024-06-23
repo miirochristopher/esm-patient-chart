@@ -1,4 +1,4 @@
-(globalThis["webpackChunk_openmrs_esm_patient_chart_app"] = globalThis["webpackChunk_openmrs_esm_patient_chart_app"] || []).push([["src_index_ts"],{
+(globalThis["webpackChunk_miirochristopher_esm_patient_chart_app"] = globalThis["webpackChunk_miirochristopher_esm_patient_chart_app"] || []).push([["src_index_ts"],{
 
 /***/ "./src/loader/loader.scss":
 /*!********************************!*\

@@ -1,5 +1,5 @@
 "use strict";
-(globalThis["webpackChunk_openmrs_esm_patient_chart_app"] = globalThis["webpackChunk_openmrs_esm_patient_chart_app"] || []).push([["src_deceased_confirmation-dialog_component_tsx"],{
+(globalThis["webpackChunk_miirochristopher_esm_patient_chart_app"] = globalThis["webpackChunk_miirochristopher_esm_patient_chart_app"] || []).push([["src_deceased_confirmation-dialog_component_tsx"],{
 
 /***/ "./src/deceased/confirmation-dialog.component.tsx":
 /*!********************************************************!*\

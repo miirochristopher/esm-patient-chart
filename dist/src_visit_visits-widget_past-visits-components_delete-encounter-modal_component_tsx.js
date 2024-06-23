@@ -1,5 +1,5 @@
 "use strict";
-(globalThis["webpackChunk_openmrs_esm_patient_chart_app"] = globalThis["webpackChunk_openmrs_esm_patient_chart_app"] || []).push([["src_visit_visits-widget_past-visits-components_delete-encounter-modal_component_tsx"],{
+(globalThis["webpackChunk_miirochristopher_esm_patient_chart_app"] = globalThis["webpackChunk_miirochristopher_esm_patient_chart_app"] || []).push([["src_visit_visits-widget_past-visits-components_delete-encounter-modal_component_tsx"],{
 
 /***/ "./src/visit/visits-widget/past-visits-components/delete-encounter-modal.component.tsx":
 /*!*********************************************************************************************!*\

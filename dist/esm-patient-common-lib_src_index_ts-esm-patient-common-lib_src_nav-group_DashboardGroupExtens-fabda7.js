@@ -1,5 +1,5 @@
 "use strict";
-(globalThis["webpackChunk_openmrs_esm_patient_chart_app"] = globalThis["webpackChunk_openmrs_esm_patient_chart_app"] || []).push([["esm-patient-common-lib_src_index_ts-esm-patient-common-lib_src_nav-group_DashboardGroupExtens-fabda7"],{
+(globalThis["webpackChunk_miirochristopher_esm_patient_chart_app"] = globalThis["webpackChunk_miirochristopher_esm_patient_chart_app"] || []).push([["esm-patient-common-lib_src_index_ts-esm-patient-common-lib_src_nav-group_DashboardGroupExtens-fabda7"],{
 
 /***/ "../esm-patient-common-lib/src/cards/card-header.scss":
 /*!************************************************************!*\

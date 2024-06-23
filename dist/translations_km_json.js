@@ -1,5 +1,5 @@
 "use strict";
-(globalThis["webpackChunk_openmrs_esm_patient_chart_app"] = globalThis["webpackChunk_openmrs_esm_patient_chart_app"] || []).push([["translations_km_json"],{
+(globalThis["webpackChunk_miirochristopher_esm_patient_chart_app"] = globalThis["webpackChunk_miirochristopher_esm_patient_chart_app"] || []).push([["translations_km_json"],{
 
 /***/ "./translations/km.json":
 /*!******************************!*\
