@@ -3,7 +3,7 @@
   "version": "8.0.1",
   "license": "MPL-2.0",
   "description": "Patient dashboard microfrontend for the OpenMRS SPA with PRO Form",
-  "browser": "dist/esm-patient-chart-app.js",
+  "browser": "dist/miirochristopher-esm-patient-chart-app.js",
   "main": "src/index.ts",
   "source": true,
   "scripts": {
