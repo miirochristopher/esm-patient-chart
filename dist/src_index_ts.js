@@ -6974,11 +6974,11 @@ var SendSmsForm = function(param) {
         if (isOnline) {
             (0,_utils_send_sms_utils__WEBPACK_IMPORTED_MODULE_7__.saveQuestionnaire)(payload, abortController).pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_12__.first)()).subscribe({
                 next: function(response) {
-                    if (response.status === 201) {
+                    if (response.status === 200) {
                         (0,_openmrs_esm_framework__WEBPACK_IMPORTED_MODULE_5__.showSnackbar)({
                             kind: "success",
                             title: t("smsSent", "SMS Delivered"),
-                            subtitle: t("smsSentSuccessfully", "PRO Questionnaire url (SMS) sent to Patient successfully!")
+                            subtitle: t("sendSmsSuccessful", "PRO Questionnaire url (SMS) sent to Patient successfully!")
                         });
                     } else {
                         closeWorkspace({
@@ -7146,6 +7146,7 @@ function saveQuestionnaire(payload, abortController) {
         },
         body: payload
     });
+    console.log(payload);
 }
 
 

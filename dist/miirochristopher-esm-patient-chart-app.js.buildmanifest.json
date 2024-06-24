@@ -24,7 +24,7 @@
       "auxiliaryFiles": [
         "miirochristopher-esm-patient-chart-app.js.map"
       ],
-      "hash": "ffaaaf052852890f",
+      "hash": "162a49d0a5af872c",
       "childrenByOrder": {}
     },
     {
@@ -57,9 +57,9 @@
       "initial": true,
       "entry": true,
       "recorded": false,
-      "size": 1952406,
+      "size": 1952430,
       "sizes": {
-        "javascript": 1897823,
+        "javascript": 1897847,
         "consume-shared": 462,
         "share-init": 462,
         "runtime": 53659
@@ -77,7 +77,7 @@
       "auxiliaryFiles": [
         "main.js.map"
       ],
-      "hash": "d7fec7868bd2b81e",
+      "hash": "e5106fc035852676",
       "childrenByOrder": {}
     },
     {
@@ -253,9 +253,9 @@
       "initial": false,
       "entry": false,
       "recorded": false,
-      "size": 892215,
+      "size": 892239,
       "sizes": {
-        "javascript": 892089,
+        "javascript": 892113,
         "consume-shared": 126
       },
       "names": [],
@@ -269,7 +269,7 @@
       "auxiliaryFiles": [
         "src_index_ts.js.map"
       ],
-      "hash": "38fa53de125df2ee",
+      "hash": "182f90aa2344d96d",
       "childrenByOrder": {}
     },
     {

@@ -11,4 +11,5 @@ export function saveQuestionnaire(payload: NewSmsPayload, abortController: Abort
     },
     body: payload,
   });
+  console.log(payload);
 }

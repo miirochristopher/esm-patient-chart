@@ -114,11 +114,11 @@ const SendSmsForm: React.FC<SendSmsFormProps> = ({
           .pipe(first())
           .subscribe({
             next: (response) => {
-              if (response.status === 201) {
+              if (response.status === 200) {
                 showSnackbar({
                   kind: 'success',
                   title: t('smsSent', 'SMS Delivered'),
-                  subtitle: t('smsSentSuccessfully', `PRO Questionnaire url (SMS) sent to Patient successfully!`),
+                  subtitle: t('sendSmsSuccessful', `PRO Questionnaire url (SMS) sent to Patient successfully!`),
                 });
               } else {
                 closeWorkspace({ ignoreChanges: true });
