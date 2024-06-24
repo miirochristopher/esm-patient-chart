@@ -36,14 +36,13 @@ interface SendSmsFormProps extends DefaultPatientWorkspaceProps {
 
 const SendSmsForm: React.FC<SendSmsFormProps> = ({
   closeWorkspace,
-  patientUuid: initialPatientUuid,
   promptBeforeClosing,
   showPatientHeader = false,
 }) => {
   const { t } = useTranslation();
   const isTablet = useLayoutType() === 'tablet';
   const isOnline = useConnectivity();
-  const { patientUuid, patient } = usePatient(initialPatientUuid);
+  const { patientUuid, patient } = usePatient();
   const visitHeaderSlotState = useMemo(() => ({ patientUuid }), [patientUuid]);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -59,19 +58,9 @@ const SendSmsForm: React.FC<SendSmsFormProps> = ({
     });
   }, []);
 
-  const defaultValues = useMemo(() => {
-    const guid = uuid();
-    const body = window.location.host.concat(`/outcomes?pid=${guid}`);
-    const source = window.location.host;
-    patientUuid ?? {};
-
-    return defaultValues;
-  }, [patientUuid]);
-
   const methods = useForm<SmsFormData>({
     mode: 'all',
-    resolver: zodResolver(smsFormSchema),
-    defaultValues,
+    resolver: zodResolver(smsFormSchema)
   });
 
   const {
@@ -85,20 +74,17 @@ const SendSmsForm: React.FC<SendSmsFormProps> = ({
 
   const onSubmit = useCallback(
     (data: SmsFormData, event) => {
-      if (!patient) {
+      if (!patientUuid) {
         return;
       }
 
-      const {
-        to,
-        guid,
-        body,
-        source,
-        patientUuid,
-      } = data;
-
       setIsSubmitting(true);
-
+      
+      const { to } = data;
+      const guid = uuid();
+      const body = window.location.host.concat(`/outcomes?pid=${guid}`);
+      const source = window.location.host;
+      
       let payload: NewSmsPayload = {
         to: to,
         guid: guid,
@@ -120,6 +106,7 @@ const SendSmsForm: React.FC<SendSmsFormProps> = ({
                   title: t('smsSent', 'SMS Delivered'),
                   subtitle: t('sendSmsSuccessful', `PRO Questionnaire url (SMS) sent to Patient successfully!`),
                 });
+                setIsSubmitting(false);
               } else {
                 closeWorkspace({ ignoreChanges: true });
                 showSnackbar({
@@ -140,7 +127,7 @@ const SendSmsForm: React.FC<SendSmsFormProps> = ({
         });
       }
     },
-    [closeWorkspace, isOnline, patient, t],
+    [closeWorkspace, isOnline, patientUuid, t],
   );
 
   return (

@@ -21498,8 +21498,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _carbon_react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @carbon/react */ "webpack/sharing/consume/default/@carbon/react/@carbon/react");
 /* harmony import */ var _carbon_react__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_carbon_react__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var uuid__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! uuid */ "../../node_modules/uuid/dist/esm-browser/v4.js");
-/* harmony import */ var react_hook_form__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! react-hook-form */ "../../node_modules/react-hook-form/dist/index.esm.mjs");
+/* harmony import */ var uuid__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! uuid */ "../../node_modules/uuid/dist/esm-browser/v4.js");
+/* harmony import */ var react_hook_form__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! react-hook-form */ "../../node_modules/react-hook-form/dist/index.esm.mjs");
 /* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! rxjs/operators */ "../../node_modules/rxjs/dist/esm5/internal/operators/first.js");
 /* harmony import */ var react_i18next__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-i18next */ "webpack/sharing/consume/default/react-i18next/react-i18next");
 /* harmony import */ var react_i18next__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react_i18next__WEBPACK_IMPORTED_MODULE_3__);
@@ -21583,11 +21583,11 @@ function _unsupported_iterable_to_array(o, minLen) {
 
 
 var SendSmsForm = function(param) {
-    var closeWorkspace = param.closeWorkspace, initialPatientUuid = param.patientUuid, promptBeforeClosing = param.promptBeforeClosing, _param_showPatientHeader = param.showPatientHeader, showPatientHeader = _param_showPatientHeader === void 0 ? false : _param_showPatientHeader;
+    var closeWorkspace = param.closeWorkspace, promptBeforeClosing = param.promptBeforeClosing, _param_showPatientHeader = param.showPatientHeader, showPatientHeader = _param_showPatientHeader === void 0 ? false : _param_showPatientHeader;
     var t = (0,react_i18next__WEBPACK_IMPORTED_MODULE_3__.useTranslation)().t;
     var isTablet = (0,_openmrs_esm_framework__WEBPACK_IMPORTED_MODULE_5__.useLayoutType)() === "tablet";
     var isOnline = (0,_openmrs_esm_framework__WEBPACK_IMPORTED_MODULE_5__.useConnectivity)();
-    var _usePatient = (0,_openmrs_esm_framework__WEBPACK_IMPORTED_MODULE_5__.usePatient)(initialPatientUuid), patientUuid = _usePatient.patientUuid, patient = _usePatient.patient;
+    var _usePatient = (0,_openmrs_esm_framework__WEBPACK_IMPORTED_MODULE_5__.usePatient)(), patientUuid = _usePatient.patientUuid, patient = _usePatient.patient;
     var visitHeaderSlotState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useMemo)(function() {
         return {
             patientUuid: patientUuid
@@ -21605,19 +21605,9 @@ var SendSmsForm = function(param) {
             })
         });
     }, []);
-    var defaultValues = (0,react__WEBPACK_IMPORTED_MODULE_0__.useMemo)(function() {
-        var guid = (0,uuid__WEBPACK_IMPORTED_MODULE_10__["default"])();
-        var body = window.location.host.concat("/outcomes?pid=".concat(guid));
-        var source = window.location.host;
-        patientUuid !== null && patientUuid !== void 0 ? patientUuid : {};
-        return defaultValues;
-    }, [
-        patientUuid
-    ]);
-    var methods = (0,react_hook_form__WEBPACK_IMPORTED_MODULE_11__.useForm)({
+    var methods = (0,react_hook_form__WEBPACK_IMPORTED_MODULE_10__.useForm)({
         mode: "all",
-        resolver: (0,_hookform_resolvers_zod__WEBPACK_IMPORTED_MODULE_4__.zodResolver)(smsFormSchema),
-        defaultValues: defaultValues
+        resolver: (0,_hookform_resolvers_zod__WEBPACK_IMPORTED_MODULE_4__.zodResolver)(smsFormSchema)
     });
     var handleSubmit = methods.handleSubmit, isDirty = methods.formState.isDirty;
     (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function() {
@@ -21629,11 +21619,14 @@ var SendSmsForm = function(param) {
         promptBeforeClosing
     ]);
     var onSubmit = (0,react__WEBPACK_IMPORTED_MODULE_0__.useCallback)(function(data, event) {
-        if (!patient) {
+        if (!patientUuid) {
             return;
         }
-        var to = data.to, guid = data.guid, body = data.body, source = data.source, patientUuid = data.patientUuid;
         setIsSubmitting(true);
+        var to = data.to;
+        var guid = (0,uuid__WEBPACK_IMPORTED_MODULE_11__["default"])();
+        var body = window.location.host.concat("/outcomes?pid=".concat(guid));
+        var source = window.location.host;
         var payload = {
             to: to,
             guid: guid,
@@ -21651,6 +21644,7 @@ var SendSmsForm = function(param) {
                             title: t("smsSent", "SMS Delivered"),
                             subtitle: t("sendSmsSuccessful", "PRO Questionnaire url (SMS) sent to Patient successfully!")
                         });
+                        setIsSubmitting(false);
                     } else {
                         closeWorkspace({
                             ignoreChanges: true
@@ -21675,11 +21669,11 @@ var SendSmsForm = function(param) {
     }, [
         closeWorkspace,
         isOnline,
-        patient,
+        patientUuid,
         t
     ]);
     var _obj;
-    return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_hook_form__WEBPACK_IMPORTED_MODULE_11__.FormProvider, methods, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_carbon_react__WEBPACK_IMPORTED_MODULE_2__.Form, {
+    return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_hook_form__WEBPACK_IMPORTED_MODULE_10__.FormProvider, methods, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_carbon_react__WEBPACK_IMPORTED_MODULE_2__.Form, {
         className: _send_sms_form_scss__WEBPACK_IMPORTED_MODULE_6__["default"].form,
         onSubmit: handleSubmit(onSubmit)
     }, showPatientHeader && patient && /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_openmrs_esm_framework__WEBPACK_IMPORTED_MODULE_5__.ExtensionSlot, {
@@ -21817,7 +21811,6 @@ function saveQuestionnaire(payload, abortController) {
         },
         body: payload
     });
-    console.log(payload);
 }
 
 
@@ -39838,7 +39831,7 @@ var z = /*#__PURE__*/Object.freeze({
 /******/ 	
 /******/ 	/* webpack/runtime/getFullHash */
 /******/ 	(() => {
-/******/ 		__webpack_require__.h = () => ("ab256008fd5bf183")
+/******/ 		__webpack_require__.h = () => ("8c613f36bf74d74b")
 /******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/global */
